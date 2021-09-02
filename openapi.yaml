@@ -1,0 +1,237 @@
+openapi: 3.0.3
+
+info:
+  title: Strings History
+  description: ギター弦管理用アプリケーション
+  version: 1.0.0
+
+servers:
+  - url: http://undifined.com
+    description: 未定
+
+paths:
+  /v1/book:
+    post:
+      tags:
+        - book
+      description: new book
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookRegistrationParameter'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/RequestError'
+        '401':
+          $ref: '#/components/responses/AuthorizationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/SystemError'
+
+    get:
+      tags:
+        - book
+      description: show books
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+        '400':
+          $ref: '#/components/responses/RequestError'
+        '401':
+          $ref: '#/components/responses/AuthorizationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/SystemError'
+
+  /v1/book/{bookId}:
+    get:
+      tags:
+        - book
+      description: ギター詳細
+      parameters:
+        - in: path
+          name: bookId
+          required: true
+          schema:
+            $ref: '#/components/schemas/BookId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        '400':
+          $ref: '#/components/responses/RequestError'
+        '401':
+          $ref: '#/components/responses/AuthorizationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/SystemError'
+
+    put:
+      tags:
+        - book
+      description: upfate book
+      parameters:
+        - in: path
+          name: bookId
+          required: true
+          schema:
+            $ref: '#/components/schemas/BookId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookRegistrationParameter'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/RequestError'
+        '401':
+          $ref: '#/components/responses/AuthorizationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/SystemError'
+
+    delete:
+      tags:
+        - book
+      description: upfate book
+      parameters:
+        - in: path
+          name: bookId
+          required: true
+          schema:
+            $ref: '#/components/schemas/BookId'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/RequestError'
+        '401':
+          $ref: '#/components/responses/AuthorizationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/SystemError'
+
+
+components:
+  responses:
+    RequestError:
+      description: リクエスト不正エラー
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    AuthorizationError:
+      description: 認証エラー
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    NotFoundError:
+      description: NotFoundエラー
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    SystemError:
+      description: システムエラー
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+  schemas:
+    Error:
+      type: object
+      description: 共通エラーオブジェクト
+      required:
+        - code
+        - messsage
+      properties:
+        code:
+          type: integer
+          description: エラーコード
+        message:
+          type: string
+          description: エラーメッセージ
+
+    Book:
+      description: 本の登録情報
+      type: object
+      required:
+        - name
+        - author
+        - isbn
+      properties:
+        id:
+          $ref: "#/components/schemas/BookId"
+        name:
+          $ref: "#/components/schemas/BookName"
+        author:
+          $ref: "#/components/schemas/Author"
+        isbn:
+          $ref: "#/components/schemas/ISBN"
+
+    BookRegistrationParameter:
+      description: 本の情報の登録パラメータ
+      type: object
+      required:
+        - name
+        - author
+        - isbn
+      properties:
+        name:
+          $ref: "#/components/schemas/BookName"
+        author:
+          $ref: "#/components/schemas/Author"
+        isbn:
+          $ref: "#/components/schemas/ISBN"
+
+    BookId:
+      type: string
+      description: 本のID
+      minLength: 32
+      maxLength: 32
+      example: "61E6F670152043DEA937289D990176F0"
+
+    BookName:
+      type: string
+      description: 本の名前
+      minLength: 1
+      maxLength: 64
+      example: 真月譚 月姫(1)
+
+    Author:
+      type: string
+      description: 著者
+      minLength: 1
+      maxLength: 64
+      example: 佐々木少年
+
+    ISBN:
+      type: string
+      format: number
+      minLength: 10
+      maxLength: 13
+      example: 9784048690652
