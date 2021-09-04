@@ -1,0 +1,491 @@
+{
+  "openapi" : "3.0.3",
+  "info" : {
+    "description" : "ギター弦管理用アプリケーション",
+    "title" : "Strings History",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "description" : "未定",
+    "url" : "http://undifined.com"
+  } ],
+  "paths" : {
+    "/v1/book" : {
+      "get" : {
+        "description" : "show books",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "items" : {
+                    "$ref" : "#/components/schemas/Book"
+                  },
+                  "type" : "array"
+                }
+              }
+            },
+            "description" : "OK"
+          },
+          "400" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            },
+            "description" : "リクエスト不正エラー"
+          },
+          "401" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            },
+            "description" : "認証エラー"
+          },
+          "404" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            },
+            "description" : "NotFoundエラー"
+          },
+          "500" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            },
+            "description" : "システムエラー"
+          }
+        },
+        "tags" : [ "book" ]
+      },
+      "post" : {
+        "description" : "new book",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/BookRegistrationParameter"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "400" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            },
+            "description" : "リクエスト不正エラー"
+          },
+          "401" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            },
+            "description" : "認証エラー"
+          },
+          "404" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            },
+            "description" : "NotFoundエラー"
+          },
+          "500" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            },
+            "description" : "システムエラー"
+          }
+        },
+        "tags" : [ "book" ]
+      }
+    },
+    "/v1/book/{bookId}" : {
+      "delete" : {
+        "description" : "upfate book",
+        "parameters" : [ {
+          "explode" : false,
+          "in" : "path",
+          "name" : "bookId",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/BookId"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "400" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            },
+            "description" : "リクエスト不正エラー"
+          },
+          "401" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            },
+            "description" : "認証エラー"
+          },
+          "404" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            },
+            "description" : "NotFoundエラー"
+          },
+          "500" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            },
+            "description" : "システムエラー"
+          }
+        },
+        "tags" : [ "book" ]
+      },
+      "get" : {
+        "description" : "ギター詳細",
+        "parameters" : [ {
+          "explode" : false,
+          "in" : "path",
+          "name" : "bookId",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/BookId"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Book"
+                }
+              }
+            },
+            "description" : "OK"
+          },
+          "400" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            },
+            "description" : "リクエスト不正エラー"
+          },
+          "401" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            },
+            "description" : "認証エラー"
+          },
+          "404" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            },
+            "description" : "NotFoundエラー"
+          },
+          "500" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            },
+            "description" : "システムエラー"
+          }
+        },
+        "tags" : [ "book" ]
+      },
+      "put" : {
+        "description" : "upfate book",
+        "parameters" : [ {
+          "explode" : false,
+          "in" : "path",
+          "name" : "bookId",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/BookId"
+          },
+          "style" : "simple"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/BookRegistrationParameter"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "400" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            },
+            "description" : "リクエスト不正エラー"
+          },
+          "401" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            },
+            "description" : "認証エラー"
+          },
+          "404" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            },
+            "description" : "NotFoundエラー"
+          },
+          "500" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            },
+            "description" : "システムエラー"
+          }
+        },
+        "tags" : [ "book" ]
+      }
+    }
+  },
+  "components" : {
+    "responses" : {
+      "RequestError" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/Error"
+            }
+          }
+        },
+        "description" : "リクエスト不正エラー"
+      },
+      "AuthorizationError" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/Error"
+            }
+          }
+        },
+        "description" : "認証エラー"
+      },
+      "NotFoundError" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/Error"
+            }
+          }
+        },
+        "description" : "NotFoundエラー"
+      },
+      "SystemError" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/Error"
+            }
+          }
+        },
+        "description" : "システムエラー"
+      }
+    },
+    "schemas" : {
+      "Error" : {
+        "description" : "共通エラーオブジェクト",
+        "properties" : {
+          "code" : {
+            "description" : "エラーコード",
+            "type" : "integer"
+          },
+          "message" : {
+            "description" : "エラーメッセージ",
+            "type" : "string"
+          }
+        },
+        "required" : [ "code", "messsage" ],
+        "type" : "object"
+      },
+      "Book" : {
+        "description" : "本の登録情報",
+        "example" : {
+          "author" : "佐々木少年",
+          "isbn" : "9784048690652",
+          "name" : "真月譚 月姫(1)",
+          "id" : "61E6F670152043DEA937289D990176F0"
+        },
+        "properties" : {
+          "id" : {
+            "description" : "本のID",
+            "example" : "61E6F670152043DEA937289D990176F0",
+            "maxLength" : 32,
+            "minLength" : 32,
+            "type" : "string"
+          },
+          "name" : {
+            "description" : "本の名前",
+            "example" : "真月譚 月姫(1)",
+            "maxLength" : 64,
+            "minLength" : 1,
+            "type" : "string"
+          },
+          "author" : {
+            "description" : "著者",
+            "example" : "佐々木少年",
+            "maxLength" : 64,
+            "minLength" : 1,
+            "type" : "string"
+          },
+          "isbn" : {
+            "example" : "9784048690652",
+            "format" : "number",
+            "maxLength" : 13,
+            "minLength" : 10,
+            "type" : "string"
+          }
+        },
+        "required" : [ "author", "isbn", "name" ],
+        "type" : "object"
+      },
+      "BookRegistrationParameter" : {
+        "description" : "本の情報の登録パラメータ",
+        "example" : {
+          "author" : "佐々木少年",
+          "isbn" : "9784048690652",
+          "name" : "真月譚 月姫(1)"
+        },
+        "properties" : {
+          "name" : {
+            "description" : "本の名前",
+            "example" : "真月譚 月姫(1)",
+            "maxLength" : 64,
+            "minLength" : 1,
+            "type" : "string"
+          },
+          "author" : {
+            "description" : "著者",
+            "example" : "佐々木少年",
+            "maxLength" : 64,
+            "minLength" : 1,
+            "type" : "string"
+          },
+          "isbn" : {
+            "example" : "9784048690652",
+            "format" : "number",
+            "maxLength" : 13,
+            "minLength" : 10,
+            "type" : "string"
+          }
+        },
+        "required" : [ "author", "isbn", "name" ],
+        "type" : "object"
+      },
+      "BookId" : {
+        "description" : "本のID",
+        "example" : "61E6F670152043DEA937289D990176F0",
+        "maxLength" : 32,
+        "minLength" : 32,
+        "type" : "string"
+      },
+      "BookName" : {
+        "description" : "本の名前",
+        "example" : "真月譚 月姫(1)",
+        "maxLength" : 64,
+        "minLength" : 1,
+        "type" : "string"
+      },
+      "Author" : {
+        "description" : "著者",
+        "example" : "佐々木少年",
+        "maxLength" : 64,
+        "minLength" : 1,
+        "type" : "string"
+      },
+      "ISBN" : {
+        "example" : "9784048690652",
+        "format" : "number",
+        "maxLength" : 13,
+        "minLength" : 10,
+        "type" : "string"
+      }
+    }
+  }
+}
