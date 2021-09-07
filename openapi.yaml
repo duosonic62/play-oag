@@ -1,8 +1,8 @@
 openapi: 3.0.3
 
 info:
-  title: Strings History
-  description: ギター弦管理用アプリケーション
+  title: Book API
+  description: Book API
   version: 1.0.0
 
 servers:
@@ -58,7 +58,7 @@ paths:
     get:
       tags:
         - book
-      description: ギター詳細
+      description: show book details
       parameters:
         - in: path
           name: bookId

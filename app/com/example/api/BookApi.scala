@@ -5,7 +5,7 @@ import com.example.model.Book
 import com.example.model.BookRegistrationParameter
 import com.example.model.Error
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2021-09-04T13:05:08.740478Z[Etc/UTC]")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2021-09-07T08:41:25.199689Z[Etc/UTC]")
 trait BookApi {
   /**
     * upfate book
@@ -13,7 +13,7 @@ trait BookApi {
   def v1BookBookIdDelete(bookId: String): Unit
 
   /**
-    * ギター詳細
+    * show book details
     */
   def v1BookBookIdGet(bookId: String): Book
 

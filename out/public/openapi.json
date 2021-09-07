@@ -1,8 +1,8 @@
 {
   "openapi" : "3.0.3",
   "info" : {
-    "description" : "ギター弦管理用アプリケーション",
-    "title" : "Strings History",
+    "description" : "Book API",
+    "title" : "Book API",
     "version" : "1.0.0"
   },
   "servers" : [ {
@@ -190,7 +190,7 @@
         "tags" : [ "book" ]
       },
       "get" : {
-        "description" : "ギター詳細",
+        "description" : "show book details",
         "parameters" : [ {
           "explode" : false,
           "in" : "path",

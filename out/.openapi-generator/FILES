@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 README.md
 app/com/example/ErrorHandler.scala
 app/com/example/Module.scala

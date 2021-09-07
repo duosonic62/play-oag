@@ -7,7 +7,7 @@ import play.api.libs.json._
   * @param code エラーコード
   * @param message エラーメッセージ
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2021-09-04T13:05:08.740478Z[Etc/UTC]")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2021-09-07T08:41:25.199689Z[Etc/UTC]")
 case class Error(
   code: Int,
   message: Option[String]

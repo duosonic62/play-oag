@@ -8,7 +8,7 @@ import com.example.model.Book
 import com.example.model.BookRegistrationParameter
 import com.example.model.Error
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2021-09-04T13:05:08.740478Z[Etc/UTC]")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2021-09-07T08:41:25.199689Z[Etc/UTC]")
 @Singleton
 class BookApiController @Inject()(cc: ControllerComponents, api: BookApi) extends AbstractController(cc) {
   /**
