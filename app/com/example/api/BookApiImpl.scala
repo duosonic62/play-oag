@@ -6,11 +6,11 @@ import com.example.model.BookRegistrationParameter
 import com.example.model.Error
 
 import java.util.UUID
+import javax.inject.Singleton
 
 /**
   * Provides a default implementation for [[BookApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2021-09-07T08:41:25.199689Z[Etc/UTC]")
 class BookApiImpl extends BookApi {
   private var books = Map.empty[String, Book]
   /**
@@ -24,7 +24,7 @@ class BookApiImpl extends BookApi {
     * @inheritdoc
     */
   override def v1BookBookIdGet(bookId: String): Book = {
-    books.getOrElse(bookId, throw IllegalStateException)
+    books.getOrElse(bookId, Book(id = None, name = "", author = "", isbn = BigDecimal.apply(0)))
   }
 
   /**
@@ -45,11 +45,15 @@ class BookApiImpl extends BookApi {
     * @inheritdoc
     */
   override def v1BookPost(bookRegistrationParameter: Option[BookRegistrationParameter]): Unit = {
-    bookRegistrationParameter.foreach(param => books + Book(
-      id = Some(UUID.randomUUID().toString),
-      name = param.name,
-      author = param.author,
-      isbn = param.isbn
-    ))
+    bookRegistrationParameter.foreach(param => {
+      val id = UUID.randomUUID().toString
+      val newBook = Book(
+        id = Some(id),
+        name = param.name,
+        author = param.author,
+        isbn = param.isbn
+      )
+      books + (id -> newBook)
+    })
   }
 }
