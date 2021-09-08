@@ -422,7 +422,7 @@
             "type" : "string"
           }
         },
-        "required" : [ "author", "isbn", "name" ],
+        "required" : [ "author", "id", "isbn", "name" ],
         "type" : "object"
       },
       "BookRegistrationParameter" : {

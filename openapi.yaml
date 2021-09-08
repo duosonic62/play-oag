@@ -180,6 +180,7 @@ components:
       description: 本の登録情報
       type: object
       required:
+        - id
         - name
         - author
         - isbn
