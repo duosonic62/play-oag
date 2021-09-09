@@ -31,7 +31,20 @@ class BookApiImpl extends BookApi {
     * @inheritdoc
     */
   override def v1BookBookIdPut(bookId: String, bookRegistrationParameter: Option[BookRegistrationParameter]): Unit = {
-    // TODO: Implement better logic
+    bookRegistrationParameter.foreach { param =>
+      if (!books.contains(bookId)) {
+        throw new IllegalArgumentException
+      }
+
+      val newBook = Book(
+        id = bookId,
+        name = param.name,
+        author = param.author,
+        isbn = param.isbn
+      )
+      books = books - bookId
+      books = books + (bookId-> newBook)
+    }
   }
 
   /**
@@ -53,7 +66,7 @@ class BookApiImpl extends BookApi {
         author = param.author,
         isbn = param.isbn
       )
-      books + (id -> newBook)
+      books = books + (id -> newBook)
     })
   }
 }
