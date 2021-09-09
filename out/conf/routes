@@ -1,0 +1,19 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+
+# Routes for Book API
+
+GET /v1/book               com.example.api.BookApiController.v1BookGet()
+POST /v1/book              com.example.api.BookApiController.v1BookPost()
+DELETE /v1/book/:bookId    com.example.api.BookApiController.v1BookBookIdDelete(bookId: String)
+GET /v1/book/:bookId       com.example.api.BookApiController.v1BookBookIdGet(bookId: String)
+PUT /v1/book/:bookId       com.example.api.BookApiController.v1BookBookIdPut(bookId: String)
+
+# Map static resources from the /public folder to the /assets URL path
+GET /assets/*file           controllers.Assets.at(file)
+GET /versionedAssets/*file  controllers.Assets.versioned(file)
+
+# Swagger UI
+GET /api                    com.example.api.ApiDocController.api
